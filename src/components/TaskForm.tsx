@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Save, X } from 'lucide-react';
-import { TaskFrequency } from '../types/Task';
+import { TaskFrequency } from '../entities/task';
 
 interface TaskFormData {
   name: string;

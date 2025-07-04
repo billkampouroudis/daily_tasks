@@ -1,6 +1,6 @@
 import React from 'react';
 import { CheckCircle2, Circle, Clock, Calendar, CalendarDays } from 'lucide-react';
-import { Task } from '../types/Task';
+import { Task } from '../entities/task';
 
 interface TaskItemProps {
   task: Task;

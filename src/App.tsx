@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
-import { Calendar, Target, RefreshCw } from 'lucide-react';
+import { useState } from 'react';
+import { Target, RefreshCw } from 'lucide-react';
 import { useTaskManager } from './hooks/useTaskManager';
 import { useTaskPool } from './hooks/useTaskPool';
 import { TaskItem } from './components/TaskItem';
 import { ProgressBar } from './components/ProgressBar';
 import { CompletionCelebration } from './components/CompletionCelebration';
 import { LoadingSpinner } from './components/LoadingSpinner';
-import { TabNavigation } from './components/TabNavigation';
 import { ControlPanel } from './components/ControlPanel';
+import { BaseLayout } from './app/layouts';
+import { Tab } from './entities';
 
 function App() {
-  const [activeTab, setActiveTab] = useState<'tasks' | 'control'>('tasks');
+  const [activeTab, setActiveTab] = useState<Tab>(Tab.tasks);
   const { taskPool, addTask, editTask, deleteTask, getTaskPoolForSelection } = useTaskPool();
   const { dailyTasks, loading, toggleTaskCompletion, getProgress, refreshTasks } = useTaskManager(getTaskPoolForSelection());
 
@@ -23,36 +24,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full shadow-sm mb-4">
-            <Calendar className="w-5 h-5 text-blue-600" />
-            <span className="text-sm font-medium text-gray-700">
-              {new Date().toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </span>
-          </div>
-          
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            Daily Task Challenge
-          </h1>
-          
-          <p className="text-gray-600 mb-6">
-            Complete your personalized tasks to build better habits
-          </p>
-        </div>
-
-        {/* Tab Navigation */}
-        <TabNavigation activeTab={activeTab} onTabChange={setActiveTab} />
-
-        {/* Content */}
-        {activeTab === 'tasks' ? (
+    <BaseLayout activeTab={activeTab} onTabChange={setActiveTab}>
+      {activeTab === 'tasks' ? (
           <div className="max-w-2xl mx-auto">
             {!dailyTasks ? (
               <div className="text-center py-12">
@@ -132,8 +105,7 @@ function App() {
             />
           </div>
         )}
-      </div>
-    </div>
+    </BaseLayout>
   );
 }
 

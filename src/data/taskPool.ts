@@ -1,4 +1,4 @@
-import { Task, TaskFrequency } from '../types/Task';
+import { Task, TaskFrequency } from '../entities/task';
 
 const createTask = (
   name: string,

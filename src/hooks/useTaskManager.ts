@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Task, DailyTasks, TaskFrequency } from '../types/Task';
+import { Task, DailyTasks, TaskFrequency } from '../entities/task';
 
 const STORAGE_KEY = 'daily-tasks';
 
@@ -85,6 +85,10 @@ export const useTaskManager = (taskPool: TaskPoolForSelection[]) => {
     setLoading(false);
   }, [taskPool]);
 
+  /**
+   * Toggles the completion status of a task with the given ID.
+   * This updates the local storage and the state.
+   */
   const toggleTaskCompletion = useCallback((taskId: string) => {
     if (!dailyTasks) return;
 

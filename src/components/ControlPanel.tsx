@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TaskForm } from './TaskForm';
 import { TaskPoolManager } from './TaskPoolManager';
-import { TaskFrequency } from '../types/Task';
+import { TaskFrequency } from '../entities/task';
 
 interface TaskPoolItem {
   id: string;

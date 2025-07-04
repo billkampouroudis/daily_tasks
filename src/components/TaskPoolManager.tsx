@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Edit2, Trash2, Clock, Calendar, CalendarDays, Filter } from 'lucide-react';
-import { TaskFrequency } from '../types/Task';
+import { TaskFrequency } from '../entities/task';
 
 interface TaskPoolItem {
   id: string;

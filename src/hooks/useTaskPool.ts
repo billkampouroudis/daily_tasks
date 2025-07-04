@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { TaskFrequency } from '../types/Task';
+import { TaskFrequency } from '../entities/task';
 import { TASK_POOL } from '../data/taskPool';
 
 interface TaskPoolItem {
